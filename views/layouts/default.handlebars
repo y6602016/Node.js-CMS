@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- call the header partial-->
+    {{> default/header}}
+
+    <body>
+        <!-- call the nav partial-->
+        {{> default/nav}}
+
+        <!-- Page Content -->
+        <div class="container">
+            {{> default/messages}}
+            {{{body}}}
+        </div>
+
+        <!-- call the footer partial-->
+        {{> default/footer}}
+
+    </body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- call the header partial-->
+    {{> admin/admin_header}}
+
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <!-- call the nav partial-->
+        {{> admin/admin_nav}}
+        <div class="content-wrapper">
+
+            {{> admin/messages}}
+
+            <!-- Page Content -->
+            {{{body}}}
+
+        <!-- call the footer partial-->
+        {{> admin/admin_footer}}
+        </div>
+    </body>
+
+</html>
