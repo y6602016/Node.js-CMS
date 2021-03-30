@@ -12,6 +12,8 @@ const {selectOption} = require('./config/customFunctions');
 const {mongoDBUrl} = require('./config/config');
 
 
+
+
 const app = express();
 
 // connect to MongoDB
@@ -31,6 +33,16 @@ mongoose.connect(mongoDBUrl,{useNewUrlParser: true, useUnifiedTopology: true})
 // if there is a {{{ body }}} in the default.handlebars
 app.engine('handlebars', hbs({defaultLayout: 'default', helpers: {select:selectOption}}));
 app.set('view engine', 'handlebars');
+let expressHbs = hbs.create({});
+
+expressHbs.handlebars.registerHelper('ifCond', function(v1, v2, options) {
+    if(v1 === v2) {
+        return options.fn(this);
+    }
+    else {
+        return null;
+    }
+});
 
 // method override middleware
 app.use(methodOverride('newMethod'));

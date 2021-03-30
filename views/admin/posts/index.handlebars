@@ -16,23 +16,24 @@
         </thead>
         <tbody class="text-center">
         {{#each posts}}
-            <tr>
-                <td>{{title}}</td>
-<!--                <td>{{_id}}</td>-->
-                <td>{{description}}</td>
-                <td>{{allowComments}}</td>
-                <td>{{category.title}}</td>
-                <td class="d-flex">
+                <tr>
+                    <td>{{title}}</td>
+                    <!--                <td>{{_id}}</td>-->
+                    <td>{{description}}</td>
+                    <td>{{allowComments}}</td>
+                    <td>{{category.title}}</td>
+                    <td class="d-flex">
 
-                    <a href="/admin/posts/edit/{{_id}}" class="btn btn-sm btn-warning mr-3">Edit Post</a>
-<!--                    form tag only supports get and post, so if we want to implement delete-->
-<!--                    we need to use method-override. Ex: action="?getter=DELETE" or action="?getter=PUT"-->
-<!--                    getter need to be defined at the methodOverride middleware-->
-                    <form action="/admin/posts/delete/{{_id}}?newMethod=DELETE" method="post">
-                        <button class="btn btn-sm btn-danger" type="submit">Delete Post</button>
-                    </form>
-                </td>
-            </tr>
+                        <a href="/admin/posts/edit/{{_id}}" class="btn btn-sm btn-warning mr-3">Edit Post</a>
+                        <!--                    form tag only supports get and post, so if we want to implement delete-->
+                        <!--                    we need to use method-override. Ex: action="?getter=DELETE" or action="?getter=PUT"-->
+                        <!--                    getter need to be defined at the methodOverride middleware-->
+                        <form action="/admin/posts/delete/{{_id}}?newMethod=DELETE" method="post">
+                            <button class="btn btn-sm btn-danger" type="submit">Delete Post</button>
+                        </form>
+                    </td>
+                </tr>
+
         {{/each}}
 
         </tbody>

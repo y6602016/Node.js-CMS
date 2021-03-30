@@ -7,6 +7,10 @@ const categorySchema = new Schema({
         type: String,
         required:true,
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+    },
 });
 
 // create model and export it

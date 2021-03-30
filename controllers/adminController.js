@@ -9,7 +9,8 @@ module.exports = {
     },
 
     getPost: (req, res) => {
-        Post.find().lean()
+        const id = req.user.id;
+        Post.find({user: id}).lean()
             .populate('category')
             .then(result=> {
                 res.render('admin/posts/index', {posts: result});
@@ -37,8 +38,9 @@ module.exports = {
                 title: req.body.title,
                 description: req.body.description,
                 allowComments: commentsAllowed,
-                category:req.body.category,
+                category: req.body.category,
                 file: `/uploads/${filename}`,
+                user: req.user.id,
             }
         );
         newPost.save()
@@ -117,7 +119,8 @@ module.exports = {
     // category methods
 
     getCategories: (req, res) => {
-        Category.find().lean()
+        const id = req.user.id;
+        Category.find({user:id}).lean()
             .then(result => {
                 res.render('admin/category/index', {categories: result});
             })
@@ -131,6 +134,7 @@ module.exports = {
         if(categoryName) {
             const newCategory = new Category({
                 title: categoryName,
+                user: req.user.id,
             });
             newCategory.save()
                 .then(result=> {
